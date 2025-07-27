@@ -26,6 +26,10 @@ setup(
             glob('config/open_manipulator_x/*')),
         (os.path.join('share', package_name, 'worlds'), glob('worlds/*')),
         (os.path.join('share', package_name), ['open-manipulator-cdc.rules']),
+        (os.path.join('share', package_name, 'config/wx250s_leader_ai'),
+            glob('config/wx250s_leader_ai/*')),
+        (os.path.join('share', package_name, 'config/wx250s_follower_ai'),
+            glob('config/wx250s_follower_ai/*')),
 
     ],
     install_requires=['setuptools'],
