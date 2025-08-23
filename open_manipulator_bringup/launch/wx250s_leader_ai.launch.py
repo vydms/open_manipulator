@@ -56,7 +56,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'port_name',
-            default_value='/dev/ttyUSB1',
+            default_value='/dev/ttyUSB0',
             description='Port name for hardware connection.',
         ),
         DeclareLaunchArgument(

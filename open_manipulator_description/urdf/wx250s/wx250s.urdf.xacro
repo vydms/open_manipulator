@@ -342,7 +342,7 @@
   </link>
 
   <joint name="wrist_angle" type="revolute">
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 -1 0"/>
     <limit
       effort="${wrist_angle_limit_effort}"
       lower="${wrist_angle_limit_lower}"
