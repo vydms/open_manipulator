@@ -20,7 +20,10 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.actions import GroupAction
 from launch.actions import IncludeLaunchDescription
+from launch.actions import ExecuteProcess
+from launch.actions import RegisterEventHandler
 from launch.conditions import IfCondition, UnlessCondition
+from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command
 from launch.substitutions import FindExecutable
@@ -56,7 +59,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'port_name',
-            default_value='/dev/ttyUSB1',
+            default_value='/dev/ttyUSB0',
             description='Port name for hardware connection.',
         ),
         DeclareLaunchArgument(
@@ -68,7 +71,6 @@ def generate_launch_description():
 
     # Launch configurations
     prefix = LaunchConfiguration('prefix')
-    use_self_collision_avoidance = LaunchConfiguration('use_self_collision_avoidance')
     use_sim = LaunchConfiguration('use_sim')
     use_fake_hardware = LaunchConfiguration('use_fake_hardware')
     fake_sensor_commands = LaunchConfiguration('fake_sensor_commands')
@@ -126,7 +128,8 @@ def generate_launch_description():
         executable='spawner',
         arguments=[
             'joint_state_broadcaster',
-            'joint_trajectory_command_broadcaster',
+            'trigger_position_controller',
+            'joint_trajectory_command_broadcaster'
         ],
         parameters=[{'robot_description': urdf_file}],
     )
@@ -140,12 +143,26 @@ def generate_launch_description():
         output='both',
     )
 
+    # Execute process to publish position command
+    position_command_process = ExecuteProcess(
+        name='trigger_position_command',
+        cmd=['ros2', 'topic', 'pub', '-r', '50', '-t', '50', '-p', '50', '/leader/trigger_position_controller/commands', 'std_msgs/msg/Float64MultiArray', 'data: [-0.005]'],
+    )
+
+    delay_position_command_after_controllers = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=robot_controller_spawner,
+            on_exit=[position_command_process],
+        )
+    )
+
     leader_with_namespace = GroupAction(
         actions=[
             PushRosNamespace('leader'),
             control_node,
             robot_controller_spawner,
             robot_state_publisher_node,
+            delay_position_command_after_controllers
         ]
     )
 

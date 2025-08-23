@@ -1,6 +1,6 @@
 services:
   open_manipulator:
-    container_name: open_manipulator
+    container_name: open_manipulator_kiro_widowx
     build:
       context: .
       dockerfile: Dockerfile

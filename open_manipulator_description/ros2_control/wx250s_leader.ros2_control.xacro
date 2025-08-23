@@ -18,7 +18,7 @@
             <plugin>dynamixel_hardware_interface/DynamixelHardware</plugin>
             <param name="port_name">${port_name}</param>
             <param name="baud_rate">1000000</param>
-            <param name="error_timeout_ms">500</param>
+            <param name="error_timeout_ms">1000</param>
             <param name="dynamixel_model_folder">/param/dxl_model</param>
             <param name="number_of_joints">7</param>
             <param name="number_of_transmissions">7</param>
@@ -106,7 +106,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
         <param name="Torque Enable">0</param>
       </gpio>
       <gpio name="dxl2">
@@ -115,7 +114,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
         <param name="Torque Enable">0</param>
       </gpio>
       <gpio name="dxl4">
@@ -124,7 +122,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
         <param name="Torque Enable">0</param>
       </gpio>
       <gpio name="dxl6">
@@ -133,7 +130,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
         <param name="Torque Enable">0</param>
       </gpio>
       <gpio name="dxl7">
@@ -142,7 +138,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
         <param name="Torque Enable">0</param>
       </gpio>
       <gpio name="dxl8">
@@ -151,7 +146,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
         <param name="Torque Enable">0</param>
       </gpio>
       <gpio name="dxl9">
@@ -160,8 +154,14 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
-        <param name="Torque Enable">0</param>
+        <param name="Torque Enable">1</param>
+        <param name="Drive Mode">0</param>
+        <param name="Operating Mode">5</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Position P Gain">1000</param>
+        <param name="Position D Gain">1500</param>
+        <param name="Current Limit">45</param>
+        <param name="Goal Current">45</param>
       </gpio>
 
     </ros2_control>
