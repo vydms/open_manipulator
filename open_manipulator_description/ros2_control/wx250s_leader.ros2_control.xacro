@@ -154,14 +154,13 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <param name="Torque Enable">1</param>
-        <param name="Drive Mode">0</param>
+        <!-- <param name="Torque Enable">1</param>
         <param name="Operating Mode">5</param>
         <param name="Return Delay Time">0</param>
         <param name="Position P Gain">1000</param>
         <param name="Position D Gain">1500</param>
         <param name="Current Limit">45</param>
-        <param name="Goal Current">45</param>
+        <param name="Goal Current">45</param> -->
       </gpio>
 
     </ros2_control>
