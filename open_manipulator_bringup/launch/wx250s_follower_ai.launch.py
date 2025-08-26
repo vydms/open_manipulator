@@ -66,6 +66,11 @@ def generate_launch_description():
             default_value='wx250s',
             description='Type of ros2_control',
         ),
+        DeclareLaunchArgument(
+            'port_name',
+            default_value='/dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT9HD1XH-if00-port0',
+            description='Port name for hardware connection.',
+        ),        
     ]
 
     # Launch configurations
@@ -76,7 +81,7 @@ def generate_launch_description():
     fake_sensor_commands = LaunchConfiguration('fake_sensor_commands')
     port_name = LaunchConfiguration('port_name')
     ros2_control_type = LaunchConfiguration('ros2_control_type')
-
+    port_name = LaunchConfiguration('port_name')
     # Generate URDF file using xacro
     urdf_file = Command([
         PathJoinSubstitution([FindExecutable(name='xacro')]),
@@ -105,6 +110,9 @@ def generate_launch_description():
         ' ',
         'ros2_control_type:=',
         ros2_control_type,
+        ' ',
+        'port_name:=',
+        port_name,        
     ])
 
     # Paths for configuration files

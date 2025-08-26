@@ -6,15 +6,18 @@
       joint_state_broadcaster:
         type: joint_state_broadcaster/JointStateBroadcaster
 
+      trigger_position_controller:
+        type: position_controllers/JointGroupPositionController
+
       joint_trajectory_command_broadcaster:
         type: joint_trajectory_command_broadcaster/JointTrajectoryCommandBroadcaster
 
-      gripper_effort_controller:
-        type: forward_command_controller/ForwardCommandController
-        joints:
-          - gripper
-        command_interfaces:
-          - effort
+
+/**:
+  trigger_position_controller:
+    ros__parameters:
+      joints:
+        - gripper
 
 /**:
   joint_trajectory_command_broadcaster:

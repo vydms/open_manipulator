@@ -146,7 +146,6 @@
         <command_interface name="Goal Position"/>
         <state_interface name="Present Position"/>
         <state_interface name="Present Velocity"/>
-        <state_interface name="Present Current"/>
       </gpio>
       <gpio name="dxl9">
         <param name="type">dxl</param>

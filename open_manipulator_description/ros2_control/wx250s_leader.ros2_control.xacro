@@ -151,12 +151,14 @@
       <gpio name="dxl9">
         <param name="type">dxl</param>
         <param name="ID">9</param>
-        <command_interface name="Goal_Position"/>
-        <state_interface name="Present_Position"/>
-        <state_interface name="Present_Velocity"/>
-        <param name="Torque_Enable">1</param>
+        <param name="Torque Enable">1</param>
+        <param name="Operating Mode">5</param>
+        <param name="Return Delay Time">0</param>
+        <param name="Position P Gain">1000</param>
+        <param name="Position D Gain">1500</param>
+        <param name="Current Limit">45</param>
+        <param name="Goal Current">45</param>
       </gpio>
-
     </ros2_control>
   </xacro:macro>
 </robot>
