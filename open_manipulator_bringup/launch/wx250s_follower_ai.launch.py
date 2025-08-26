@@ -57,6 +57,11 @@ def generate_launch_description():
             description='Enable fake sensor commands.',
         ),
         DeclareLaunchArgument(
+            'port_name',
+            default_value='/dev/ttyUSB1',
+            description='Port name for hardware connection.',
+        ),
+        DeclareLaunchArgument(
             'ros2_control_type',
             default_value='wx250s',
             description='Type of ros2_control',
@@ -74,6 +79,7 @@ def generate_launch_description():
     use_sim = LaunchConfiguration('use_sim')
     use_fake_hardware = LaunchConfiguration('use_fake_hardware')
     fake_sensor_commands = LaunchConfiguration('fake_sensor_commands')
+    port_name = LaunchConfiguration('port_name')
     ros2_control_type = LaunchConfiguration('ros2_control_type')
     port_name = LaunchConfiguration('port_name')
     # Generate URDF file using xacro
@@ -98,6 +104,9 @@ def generate_launch_description():
         ' ',
         'fake_sensor_commands:=',
         fake_sensor_commands,
+        ' ',
+        'port_name:=',
+        port_name,
         ' ',
         'ros2_control_type:=',
         ros2_control_type,
