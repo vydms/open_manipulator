@@ -131,6 +131,7 @@ def generate_launch_description():
         parameters=[{'robot_description': urdf_file}],
     )
 
+
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -139,6 +140,8 @@ def generate_launch_description():
                      'frame_prefix': 'leader_'}],
         output='both',
     )
+
+
 
     leader_with_namespace = GroupAction(
         actions=[

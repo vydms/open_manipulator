@@ -9,6 +9,12 @@
       joint_trajectory_command_broadcaster:
         type: joint_trajectory_command_broadcaster/JointTrajectoryCommandBroadcaster
 
+      gripper_effort_controller:
+        type: forward_command_controller/ForwardCommandController
+        joints:
+          - gripper
+        command_interfaces:
+          - effort
 
 /**:
   joint_trajectory_command_broadcaster:
