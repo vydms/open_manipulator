@@ -59,7 +59,7 @@ def generate_launch_description():
         ),
         DeclareLaunchArgument(
             'port_name',
-            default_value='/dev/ttyUSB1',
+            default_value='/dev/ttyUSB0',
             description='Port name for hardware connection.',
         ),
         DeclareLaunchArgument(
@@ -147,7 +147,7 @@ def generate_launch_description():
     # Execute process to publish position command
     position_command_process = ExecuteProcess(
         name='trigger_position_command',
-        cmd=['ros2', 'topic', 'pub', '-r', '50', '-t', '50', '-p', '50', '/leader/trigger_position_controller/commands', 'std_msgs/msg/Float64MultiArray', 'data: [-0.005]'],
+        cmd=['ros2', 'topic', 'pub', '-r', '50', '-t', '50', '-p', '50', '/leader/trigger_position_controller/commands', 'std_msgs/msg/Float64MultiArray', 'data: [-0.004]'],
     )
 
     delay_position_command_after_controllers = RegisterEventHandler(

@@ -12,13 +12,14 @@
       joint_trajectory_command_broadcaster:
         type: joint_trajectory_command_broadcaster/JointTrajectoryCommandBroadcaster
 
-
 /**:
   trigger_position_controller:
     ros__parameters:
       joints:
         - gripper
-
+      interfaces:
+        - position
+        
 /**:
   joint_trajectory_command_broadcaster:
     ros__parameters:
